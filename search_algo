@@ -1,0 +1,24 @@
+# Use the file name mbox-short.txt as the file name
+
+# print lines with X-DSPAM
+# count lines
+# extract floating point values from each targeted lines
+# computer average of values
+fname = input("Enter file name: ")
+fh = open(fname)
+count = 0
+new_float_value = 0
+value_in_float = 0
+times_found = 0
+for line in fh:
+    count = count + 1
+    if not line.startswith("X-DSPAM-Confidence:") :
+        continue
+    value_in_string = line[20:] # print the value as a string
+    times_found = times_found + 1
+    value_in_float = float(value_in_string) # this is the float value extracted from txt file
+    value_in_float = value_in_float +  new_float_value # takes values and adds it to previous starting at 0
+    new_float_value = value_in_float # assigns a new float value so it saves the value checked
+    avg_float = new_float_value / times_found
+
+print('Average spam confidence:', avg_float)
