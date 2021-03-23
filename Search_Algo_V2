@@ -1,0 +1,21 @@
+# Description: This program reads a text file and seprates it by spaces into an empty list then sorts it alphabeticaly 
+
+
+
+fname = input("Enter file name: ")  # ask user to input file name
+fh = open(fname) # opens a access point into the file
+
+first = list() # makes an empty list constructor form
+
+for line in fh: # loop will go through each line in file
+    spl_line = line.split() # splits each line into a singualr list
+    for word in spl_line: # take each word in the singular line
+        if word not in first: #checks if word is not contained in the empty list 
+            first.append(word) # add each word to singlular line
+
+
+
+
+first.sort()
+
+print(first)
